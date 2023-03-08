@@ -26,3 +26,22 @@
     - create class Config(object):
         - SECRET_KEY = os.environ.get('SECRET_KEY') or 'key-for-devs'
     - add k/v secret key in .flaskenv for actual password
+
+
+- Summary:
+ Basically you just need to install Flask, Python-Dotenv (to set up your environment), create Flask Environemnt (.flaskenv) then run server. 
+
+- Why Flask?
+Flask is a lightweight framework that easy to setup and easy to scale projects. I am using it for ease to write API's that I will use to create my Frontend w/ React.  
+
+
+
+<!-- setting up WTForms -->
+1. install packagees
+    - pipenv install Flask-WTF
+
+
+
+<!-- Setting up SQLAlchemy -->
+1. install packages
+    1. 

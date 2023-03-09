@@ -62,4 +62,6 @@ WTForms makes data from forms into flask really easy. Its a Python Library that 
 
 <!-- Setting up SQLAlchemy -->
 1. install packages
-    1. 
+    1. pipenv install sqlalchemy flask-sqlalchemy- psycopg2-binary
+    - psychopg2-binary is a _______
+2. connect to the Database in the the .env file

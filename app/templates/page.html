@@ -11,12 +11,11 @@
 <body>
     <h1>Sample App</h1>
     <h2>Please Login</h2>
-    <form action="/" method="POST">
+    <form action="" method="post">
         {{form.hidden_tag()}}
-        <p>{{form.username}} </p>
-        <p>{{form.password}} </p>
-        <input type="submit" value="Go">{{form.submit}} </input>
-
+        <p>{{form.username(placeholder='Enter Username')}} </p>
+        <p>{{form.password(placeholder='Enter Password')}} </p>
+        <p>{{form.submit}} </p>
     </form>
 </body>
 

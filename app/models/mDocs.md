@@ -9,6 +9,21 @@
 
 
 <!-- Connecting to SQLite -->
+1. install packages
+    - pipenv install alembic
+    - pipenv install alembic Flask-Migrate
+2. creating database url in .env or .flaskenv
+    - EX: DATABASE_URL=sqlite:///dev.db
+3. import and setup DB
+    - from flask_sqlalchemy import SQLAlchemy
+      db = SQLAlchemy()
+4. initialize db
+    - in main app file (__init__.py inside app folder) import flask, flaskMigrate, and db
+    - app.config.from_object(Config)
+    - db.init_app(app)
+    - Migrate(app,db)
+
+
 
 
 
@@ -48,3 +63,5 @@
             - Channel is table that you are creating relationship w/
             - secondary being the association table (*NOTE you need to put the association table BEFORE/ABOVE you call on it in the backref)
             - backref is a fake column that you are putting in the table where you have a relationship w/
+
+<!-- Lazy Loading vs Eager Loading -->

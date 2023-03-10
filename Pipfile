@@ -10,6 +10,8 @@ sqlalchemy = "*"
 flask = "*"
 email-validator = "*"
 flask-sqlalchemy = "*"
+alembic = "*"
+flask-migrate = "*"
 
 [dev-packages]
 pycodestyle = "*"

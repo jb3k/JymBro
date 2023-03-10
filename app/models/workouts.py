@@ -38,10 +38,11 @@ class Exercise(db.Model):
     __tablename__ = 'exercises'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    body_part = db.Column(db.String)
-    sub_body_part = db.Column(db.String)
+    name = db.Column(db.String, nullable= False)
+    body_part = db.Column(db.String, nullable= False)
+    sub_body_part = db.Column(db.String, nullable= False) 
     workout_id = db.Column(db.Integer, db.ForeignKey('workout.id'))
+    image_url = image_url = db.Column(db.String)
     # weight = db.Column(db.Integer)
     # sets = db.Column(db.Integer)
 

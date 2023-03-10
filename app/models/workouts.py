@@ -9,8 +9,6 @@ class Program(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
 
-
-
     #relationships
     #Child of User
     user = db.relationship("User", back_populates="program", cascade='all, delete')

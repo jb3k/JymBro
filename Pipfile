@@ -9,8 +9,10 @@ flask-wtf = "*"
 sqlalchemy = "*"
 flask = "*"
 email-validator = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
+pycodestyle = "*"
 
 [requires]
 python_version = "3.9"

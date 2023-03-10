@@ -28,6 +28,7 @@ class User(db.Model):
     program = db.relationship('Program', back_populates='user', cascade='all,delete')
 
 
+
 #friends table
 friends = db.Table(
     'friends',

@@ -1,5 +1,13 @@
 from . import db
 
+#friends table
+friends = db.Table(
+    'friends',
+    db.Model.metadata,
+    db.Column('friend_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+)
+
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -22,20 +30,10 @@ class User(db.Model):
         backref=db.backref('following', lazy='joined'),
         lazy='joined'
     )
-    #profile to be linked to user
+    #Parent of Profile
     profile = db.relationship('Profile', back_populates="user", cascade="all, delete")
-    #user linked to program
+    # Parent of Program
     program = db.relationship('Program', back_populates='user', cascade='all,delete')
-
-
-
-#friends table
-friends = db.Table(
-    'friends',
-    db.Model.metadata,
-    db.Column('friend_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
 
 
 
@@ -53,11 +51,11 @@ class Profile(db.Model):
     workout_equipment = goal = db.Column(db.String)
     quantity = db.Column(db.Integer)
     body_part_focus = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
-    program_id = db.Column(db.Integer, db.ForeignKey('Program.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    # program_id = db.Column(db.Integer, db.ForeignKey('program.id'))
 
     #relationships
-    #profile to be linked to a user
+    #Child of User
     user = db.relationship("User", back_populates="profile", cascade='all, delete')
-    #profile linked to program
+    #Paremt of Program
     program = db.relationship("Program", back_populates='profile', cascade='all, delete')

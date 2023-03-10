@@ -6,14 +6,18 @@ class Program(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
-    workout_id = db.Column(db.Integer, db.ForeignKey('Workout.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
+
+
 
     #relationships
-    #profile to be linked to a user
+    #Child of User
     user = db.relationship("User", back_populates="program", cascade='all, delete')
-    #profile linked to program
+    #Child of Profile
     profile = db.relationship('Profile', back_populates="program", cascade="all, delete")
+    #Parent of workout
+    workout = db.relationship('Workout', back_populates="program")
 
 
 
@@ -21,11 +25,12 @@ class Workout(db.Model):
     __tablename__ = 'workouts'
 
     id = db.Column(db.Integer, primary_key=True)
-    # sets = db.Column(db.Integer)
-    # reps = db.Column(db.Integer)
-    exercise_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+    program_id = db.Column(db.Integer, db.ForeignKey('program.id'))
+    # exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
 
     #relationships
+    #child of program
+    program = db.relationship('Program', back_populates='workout')
     #workouts have many exercises, but exercise can only have 1 workout
     exercise = db.relationship("Exercise", back_populates="workout")
 
@@ -36,34 +41,26 @@ class Exercise(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    body_part_id = db.Column(db.Integer, db.ForeignKey('Body.id'))
+    body_part = db.Column(db.String)
+    sub_body_part = db.Column(db.String)
+    workout_id = db.Column(db.Integer, db.ForeignKey('workout.id'))
+    # weight = db.Column(db.Integer)
+    # sets = db.Column(db.Integer)
 
     #relationships
-    #Each Exercise has a muscle group, 
-    exercise = db.relationship("Exercise", back_populates="workout")
+    #Child of Workout
+    workout = db.relationship('Workout', back_populates='exercise')
 
 
 
-class BodyPart(db.Model):
-    __tablename__ = 'body_part'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    body_part_id = db.Column(db.Integer, db.ForeignKey('Body.id'))
+# class BodyPart(db.Model):
+#     __tablename__ = 'body_part'
 
-    #relationships
-    #Each Exercise has a muscle group, 
-    exercise = db.relationship("Exercise", back_populates="workout")
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String)
+#     body_part_id = db.Column(db.Integer, db.ForeignKey('Body.id'))
 
-
-
-class SubBodyPart(db.Model):
-    __tablename__ = 'sub_body_part'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    body_part_id = db.Column(db.Integer, db.ForeignKey('Body.id'))
-
-    #relationships
-    #Each Exercise has a muscle group, 
-    exercise = db.relationship("Exercise", back_populates="workout")
+#     #relationships
+#     #Each Exercise has a muscle group, 
+#     exercise = db.relationship("Exercise", back_populates="workout")

@@ -42,7 +42,8 @@ class Exercise(db.Model):
     body_part = db.Column(db.String, nullable= False)
     sub_body_part = db.Column(db.String, nullable= False) 
     workout_id = db.Column(db.Integer, db.ForeignKey('workout.id'))
-    image_url = image_url = db.Column(db.String)
+    image_url = db.Column(db.String)
+    workout_equipment = db.Column(db.String)
     # weight = db.Column(db.Integer)
     # sets = db.Column(db.Integer)
 

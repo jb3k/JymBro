@@ -1,8 +1,13 @@
 from app.models import db, User
+import random
+
+users_dictionary = {}
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+
+    global users_dictionary
 
     users = [
         {
@@ -13,37 +18,7 @@ def seed_users():
             "password": "password"
         }, 
         {
-            "email": "user3@gmail.com",
-            "first_name": "Rap",
-            "last_name": "Monster",
-            "password": "password",
-            "username": "the_official_rm"
-        },
-        {
-            "email": "user4@gmail.com",
-            "first_name": "Ryan",
-            "last_name": "Garcia",
-            "password": "password",
-            "username": "kingryan",
-        },
-        {
-            "email": "user5@gmail.com",
-            "first_name": "John",
-            "last_name": "Hoffmann",
-            "password": "password",
-            "username": "johnbob",
-            
-        },
-        {
-            "email": "user6@gmail.com",
-            "first_name": "Jay",
-            "last_name": "Park",
-            "password": "password",
-            "username": "moresojuplease",
-        
-        },
-        {
-            "email": "user7@gmail.com",
+            "email": "user1@gmail.com",
             "first_name": "Mohammad",
             "last_name": "Ali",
             "password": "password",
@@ -51,46 +26,17 @@ def seed_users():
         
         },
         {
-            "email": "user8@gmail.com",
-            "first_name": "Pikachu",
-            "last_name": "de los Rios",
-            "password": "password",
-            "username": "detective_pikachu",
-        
-        },
-        {
-            "email": "user9@gmail.com",
-            "first_name": "James",
-            "last_name": "Johnson",
-            "password": "password",
-            "username": "jamesj",
-            
-        },
-        {
-            "email": "user10@gmail.com",
+            "email": "user2@gmail.com",
             "first_name": "Naruto",
             "last_name": "Uzumaki",
             "password": "password",
             "username": "7thHokage",
 
         },
-        {
-            "email": "user11@gmail.com",
-            "first_name": "Jennie",
-            "last_name": "Kim",
-            "password": "password",
-            "username": "the_real_jk",
-        },
-        {
-            "email": "user12@gmail.com",
-            "first_name": "Lisa",
-            "last_name": "Manoban",
-            "password": "password",
-            "username": "lalalalisa",
-            
-        }
     ]
 
+
+    # looping thru the list of users i created above and adding them to the db
     for user in users:
 
         new_user = User(
@@ -102,6 +48,33 @@ def seed_users():
         )
 
         db.session.add(new_user)
+
+
+    # 
+    for i, user in enumerate(users):
+        users_dictionary[f'user{i+1}'] = User(
+            email = user["email"],
+            first_name = user["first_name"],
+            last_name = user["last_name"],
+            password = user["password"],
+            username = user["username"]
+        )
+
+    for user in users_dictionary.values():
+        max_range = random.randint(0, 3)
+        new_set = set()
+        for i in range(max_range):
+            random_user=random.choice(list(users_dictionary.values()))
+            # if random_user is not current user, then add to set.  If it is current user, do nothing.
+            if random_user.username != user.username:
+                new_set.add(random_user)
+
+        # for each user add following_id = list(new_set)
+        user.followers = list(new_set)
+
+
+
+
 
     db.session.commit()
     print('Users were succesfully created')

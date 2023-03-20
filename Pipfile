@@ -12,6 +12,7 @@ email-validator = "*"
 flask-sqlalchemy = "*"
 alembic = "*"
 flask-migrate = "*"
+requests = "*"
 
 [dev-packages]
 pycodestyle = "*"

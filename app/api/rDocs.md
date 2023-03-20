@@ -21,11 +21,17 @@ Why alembic?
 1. install flask-migrate
     - pipenv install alembic Flask-Migrate
 2. make sure you have the DB URL in .env or .flaskenv
-3. import SQLAlchemy in models folder
+3. import SQLAlchemy in models folder and also import all of the models from your files
     Code:
     from flask_sqlalchemy import SQLAlchemy
     db = SQLAlchemy()
-4. make sure you models and seed data are connected
+4. make sure you models and seed data are connected to the init__app file
+    code: (need these lines in init__app to let flask about seed commands)
+    ```
+    from .seeds import seed_commands
+    app.cli.add_command(seed_commands)
+    ```
+
 5. initialize flask 
     - pipenv run flask db init
     - this will create the migrations folder with the files from above.

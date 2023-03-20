@@ -51,30 +51,27 @@ def seed_users():
 
 
     # 
-    for i, user in enumerate(users):
-        users_dictionary[f'user{i+1}'] = User(
-            email = user["email"],
-            first_name = user["first_name"],
-            last_name = user["last_name"],
-            password = user["password"],
-            username = user["username"]
-        )
+    # for i, user in enumerate(users):
+    #     users_dictionary[f'user{i+1}'] = User(
+    #         email = user["email"],
+    #         first_name = user["first_name"],
+    #         last_name = user["last_name"],
+    #         password = user["password"],
+    #         username = user["username"]
+    #     )
 
-    for user in users_dictionary.values():
-        max_range = random.randint(0, 3)
-        new_set = set()
-        for i in range(max_range):
-            random_user=random.choice(list(users_dictionary.values()))
-            # if random_user is not current user, then add to set.  If it is current user, do nothing.
-            if random_user.username != user.username:
-                new_set.add(random_user)
+    # for user in users_dictionary.values():
+    #     max_range = random.randint(0, 3)
+    #     new_set = set()
+    #     for i in range(max_range):
+    #         random_user=random.choice(list(users_dictionary.values()))
+    #         # if random_user is not current user, then add to set.  If it is current user, do nothing.
+    #         if random_user.username != user.username:
+    #             new_set.add(random_user)
 
-        # for each user add following_id = list(new_set)
-        user.followers = list(new_set)
-
-
-
-
+    #     # for each user add following_id = list(new_set)
+    #     user.followers = list(new_set)
+    
 
     db.session.commit()
     print('Users were succesfully created')

@@ -14,33 +14,34 @@ def seed_exercise():
     # response = requests.request("GET", url, headers=headers, params=querystring)
     # print(response.text)
 
-
     muscle = 'biceps'
     api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
     response = requests.get(api_url, headers={'X-Api-Key': '50d59d0504mshcd1e54064668a77p1e96c6jsncaa048b28a6d'})
     if response.status_code == requests.codes.ok:
-        print(response.text)
+        exercises = response.text
+
+        for exercise in exercises:
+
+            new_exercise = Exercise(
+                name = exercise["name"],
+                muscle = exercise["muscle"],
+                type = exercise["type"],
+                equipment = exercise["equipment"],
+                difficulty = exercise["difficulty"],
+                instructions = exercise["instructions"],
+                image_url = exercise["image_url"],
+                sub_muscle = exercise["sub_muscle"],
+                workout_id = profile["workout_id"],
+
+            )
+
+            db.session.add(new_exercise)
+        
+        db.session.commit()
+        print('Exercises were succesfully created')
+
     else:
         print("Error:", response.status_code, response.text)
-
-
-
-    for profile in profiles:
-
-        new_profile = Profile(
-            first_name = user["first_name"],
-            last_name = user["last_name"],
-            username = user["username"],
-            email = user["email"],
-            password = user["password"],
-        )
-
-        db.session.add(new_profile)
-
-    db.session.commit()
-    print('Profiles were succesfully created')
-
-
 
 
 

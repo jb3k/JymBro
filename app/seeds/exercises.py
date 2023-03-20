@@ -5,15 +5,23 @@ import requests
 def seed_exercise():
 
     #retrieve data from API
-    url = "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises"
-    querystring = {"muscle":"biceps"}
-    headers = {
-        "X-RapidAPI-Key": "50d59d0504mshcd1e54064668a77p1e96c6jsncaa048b28a6d",
-        "X-RapidAPI-Host": "exercises-by-api-ninjas.p.rapidapi.com"
-    }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    print(response.text)
+    # url = "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises"
+    # querystring = {"muscle":"biceps"}
+    # headers = {
+    #     "X-RapidAPI-Key": "50d59d0504mshcd1e54064668a77p1e96c6jsncaa048b28a6d",
+    #     "X-RapidAPI-Host": "exercises-by-api-ninjas.p.rapidapi.com"
+    # }
+    # response = requests.request("GET", url, headers=headers, params=querystring)
+    # print(response.text)
 
+
+    muscle = 'biceps'
+    api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
+    response = requests.get(api_url, headers={'X-Api-Key': '50d59d0504mshcd1e54064668a77p1e96c6jsncaa048b28a6d'})
+    if response.status_code == requests.codes.ok:
+        print(response.text)
+    else:
+        print("Error:", response.status_code, response.text)
 
 
 

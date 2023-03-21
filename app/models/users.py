@@ -5,13 +5,13 @@ from . import db
 friends = db.Table(
     'friends',
     db.Model.metadata,
-    db.Column('friend_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    db.Column('friend_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
 )
 
 
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50))

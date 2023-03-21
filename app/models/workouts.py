@@ -3,7 +3,7 @@ from . import db
 
 
 class Workout(db.Model):
-    __tablename__ = 'workouts'
+    __tablename__ = 'workout'
 
     id = db.Column(db.Integer, primary_key=True)
     program_id = db.Column(db.Integer, db.ForeignKey('program.id'))

@@ -22,3 +22,7 @@ class Profile(db.Model):
     user = db.relationship("User", back_populates="profile", cascade='all, delete')
     #Paremt of Program
     program = db.relationship("Program", back_populates='profile', cascade='all, delete')
+
+
+
+    

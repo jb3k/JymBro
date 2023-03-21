@@ -3,7 +3,7 @@ from . import db
 
 
 class Exercise(db.Model):
-    __tablename__ = 'exercises'
+    __tablename__ = 'exercise'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable= False)

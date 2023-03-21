@@ -24,5 +24,17 @@ class Profile(db.Model):
     program = db.relationship("Program", back_populates='profile', cascade='all, delete')
 
 
-
-    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "experienceLevel": self.experience_level,
+            "bodyType": self.body_type,
+            "height": self.height,
+            "weight": self.weight,
+            "bio": self.bio,
+            "goal": self.goal,
+            "workoutEquipment": self.workout_equipment,
+            "quantity": self.quantity,
+            "bodyFocus": self.body_part_focus,
+            "userId": self.user_id
+        }

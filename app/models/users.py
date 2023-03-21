@@ -35,3 +35,14 @@ class User(db.Model):
     profile = db.relationship('Profile', back_populates="user", cascade="all, delete")
     # Parent of Program
     program = db.relationship('Program', back_populates='user', cascade='all,delete')
+
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'email': self.email,
+            'password': self.password,
+            'userName': self.user_name
+        }

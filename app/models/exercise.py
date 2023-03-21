@@ -21,3 +21,17 @@ class Exercise(db.Model):
     #relationships
     #Child of Workout
     workout = db.relationship('Workout', back_populates='exercise')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "muscle": self.muscle,
+            "subMuscle": self.sub_muscle,
+            "workoutId": self.workout_id,
+            "imageUrl": self.image_url,
+            "equipment": self.equipment,
+            "difficulty": self.difficulty,
+            "workoutType": self.workout_type,
+            "instructions": self.instructions
+        }

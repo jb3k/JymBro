@@ -16,6 +16,13 @@ class Workout(db.Model):
     exercise = db.relationship("Exercise", back_populates="workout")
 
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "programId": self.program_id,
+            # "exerciseId": self.exercise_id,
+        }
+
 
 
 # class BodyPart(db.Model):

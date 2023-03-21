@@ -11,7 +11,7 @@ class Profile(db.Model):
     weight = db.Column(db.Integer)
     bio = db.Column(db.String(250))
     goal = db.Column(db.String)
-    workout_equipment = goal = db.Column(db.String)
+    workout_equipment = db.Column(db.String)
     quantity = db.Column(db.Integer)
     body_part_focus = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

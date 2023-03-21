@@ -17,6 +17,8 @@ What is alembic?
 Why alembic?
 - using Alembic with Python provides a reliable and efficient way to manage database schema changes, while also allowing developers to leverage the flexibility and power of Python.
 
+
+
 <!-- Using alembic with Flask -->
 1. install flask-migrate
     - pipenv install alembic Flask-Migrate

@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from .config import Config
 from .models import db
 from .seeds import seed_commands
+
 app = Flask(__name__)
 
 from app.api import routes

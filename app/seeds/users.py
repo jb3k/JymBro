@@ -22,17 +22,15 @@ def seed_users():
             "first_name": "Mohammad",
             "last_name": "Ali",
             "password": "password",
-            "username": "jball",
-        
+            "username": "jball"
         },
         {
             "email": "user2@gmail.com",
             "first_name": "Naruto",
             "last_name": "Uzumaki",
             "password": "password",
-            "username": "7thHokage",
-
-        },
+            "username": "7thHokage"
+        }
     ]
 
 

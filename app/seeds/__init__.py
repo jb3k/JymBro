@@ -19,10 +19,10 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     # Add other seed functions here
-    seed_profile()
-    seed_program()
-    seed_workout()
-    seed_exercise()
+    # seed_profile()
+    # seed_program()
+    # seed_workout()
+    # seed_exercise()
 
 
 # Creates the `flask seed undo` command
@@ -30,9 +30,9 @@ def seed():
 def undo():
     undo_users()
     # Add other undo functions here
-    undo_profile()
-    undo_program()
-    undo_workout()
-    undo_exercise()
+    # undo_profile()
+    # undo_program()
+    # undo_workout()
+    # undo_exercise()
 
 #force upload
